@@ -10,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.example.bankcrudjee.model.User;
 import com.example.bankcrudjee.model.Persone;
 import com.example.bankcrudjee.model.Entreprise;
@@ -33,93 +32,7 @@ public class contrServlet extends HttpServlet {
             throws ServletException, IOException
 
     {
-        PrintWriter out = response.getWriter();
-        out.print("<br>");
-        out.print("<h1>Liste des Entreprises</h1>");
-        out.println("<table border='1'><tr><th>Id</th><th>Numero</th><th>Solde</th><th>Nom</th><th>Delete</th>");
 
-        try {
-            Connection con = connect();;
-            Statement st= con.createStatement();
-            ResultSet rs=st.executeQuery("select * from entreprise");
-            while(rs.next()) {
-                int id1  = rs.getInt(1);
-
-
-
-                out.print("<tr><td>");
-                out.println(rs.getInt(1));
-                out.print("</td>");
-                out.print("<td>");
-                out.println(rs.getLong(2));
-                out.print("</td>");
-                out.print("<td>");
-                out.println(rs.getDouble(3));
-                out.print("</td>");
-                out.print("<td>");
-                out.println(rs.getString(6));
-                out.print("</td>");
-                out.print("<td>");
-                out.print("<a href=delete?id=");
-                out.println(id1);
-                out.print(">");
-                out.println("Delete");
-                out.println("</a>");
-                out.print("</td>");
-                out.print("</tr>");
-            }
-
-        }catch(Exception e)
-        {
-            System.out.println(e);
-        }
-        out.print("</table>");
-
-        out.print("<br>");
-        out.print("<h1>Liste des Personnes</h1>");
-
-
-        out.println("<table border='1'><tr><th>Id</th><th>Numero</th><th>Solde</th><th>Nom</th><th>Prenom</th><th>Delete</th>");
-        try {
-            Connection con = connect();;
-            Statement st= con.createStatement();
-            ResultSet rs=st.executeQuery("select * from personel");
-            while(rs.next()) {
-                int id1  = rs.getInt(1);
-
-
-                out.print("<tr><td>");
-                out.println(rs.getInt(1));
-                out.print("</td>");
-                out.print("<td>");
-                out.println(rs.getLong(2));
-                out.print("</td>");
-                out.print("<td>");
-                out.println(rs.getDouble(3));
-                out.print("</td>");
-                out.print("<td>");
-                out.println(rs.getString(6));
-                out.print("</td>");
-                out.print("<td>");
-                out.println(rs.getString(7
-                ));
-                out.print("</td>");
-                out.print("<td>");
-                out.print("<a href=delete?id=");
-                out.println(id1);
-                out.print(">");
-                out.println("Delete");
-                out.println("</a>");
-                out.print("</td>");
-
-                out.print("</tr>");
-            }
-
-        }catch(Exception e)
-        {
-            System.out.println(e);
-        }
-        out.print("</table>");
 
         String action = request.getServletPath();
 
@@ -156,7 +69,7 @@ public class contrServlet extends HttpServlet {
     private void userList(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         List<User> userList = userDao.allUser();
         request.setAttribute("users", userList);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("accueil.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -174,7 +87,7 @@ public class contrServlet extends HttpServlet {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("accueil.jsp");
 
 
     }
@@ -187,7 +100,7 @@ public class contrServlet extends HttpServlet {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("accueil.jsp");
 
     }
     private void insertEntreprise(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -201,7 +114,7 @@ public class contrServlet extends HttpServlet {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("accueil.jsp");
     }
 
     private void insertPersone(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -216,7 +129,7 @@ public class contrServlet extends HttpServlet {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("accueil.jsp");
     }
 
 

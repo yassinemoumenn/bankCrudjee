@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="bankcrudjee-1.0-SNAPSHOT.war">
+    <root id="archive" name="banqueApp-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="bankcrudjee:war exploded" />
     </root>
   </artifact>

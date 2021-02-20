@@ -58,14 +58,14 @@
 
                     <fieldset class="form-group">
                         <label>User Numero</label> <input type="text"
-                                                         value="<c:out value='${user.numero}' />" class="form-control"
-                                                         name="email">
+                                                          value="<c:out value='${user.numero}' />" class="form-control"
+                                                          name="email">
                     </fieldset>
 
                     <fieldset class="form-group">
                         <label>User solde</label> <input type="text"
-                                                           value="<c:out value='${user.solde}' />" class="form-control"
-                                                           name="country">
+                                                         value="<c:out value='${user.solde}' />" class="form-control"
+                                                         name="solde">
                     </fieldset>
 
                     <button type="submit" class="btn btn-success">Save</button>

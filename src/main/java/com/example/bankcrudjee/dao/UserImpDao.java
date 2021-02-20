@@ -27,7 +27,7 @@ public class UserImpDao implements UserDao {
             preparedStatement.setLong(2, entreprise.getNumeroUser());
             preparedStatement.setDouble(3, entreprise.getSolde());
             preparedStatement.setString(4, entreprise.getNom());
-           //  System.out.println(preparedStatement);
+
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
         }
@@ -40,7 +40,7 @@ public class UserImpDao implements UserDao {
             preparedStatement.setDouble(3, persone.getSolde());
             preparedStatement.setString(4, persone.getNom());
             preparedStatement.setString(5, persone.getPrenom());
-            //  System.out.println(preparedStatement);
+
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
         }
@@ -70,7 +70,7 @@ public class UserImpDao implements UserDao {
         try (Connection connection = connect();
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_SQL);) {
             preparedStatement.setString(1, type);
-            //System.out.println(preparedStatement);
+
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 String user_type = rs.getString("user_type");
